@@ -12,20 +12,29 @@ int sget(char *vetor, int tam) {
   }
 }
 
-#define TAM 50
-int main(void) {
-  char frase[50];
+int primeiraletra (char* frase){
+  
   int i;
+  int tamanho = strlen(frase);
+
+  if(tamanho > 0){
+    frase[0] = toupper(frase[0]);
+  }
+
+  for(i = 0; i < tamanho; i++){
+    if(frase[i] == '.' && i < tamanho-1){
+      frase[i + 2] = toupper(frase[i + 2]);
+    }
+  }
+}
+
+#define TAM 50
+int main (void){
+  char frase[TAM];
 
   printf("Input: ");
   sget(frase, TAM);
 
-  printf("Output: ");
-  for (i = 0; i < strlen(frase) + 1; i++) {
-    if (i == 0 || frase[i - 1] == ' ') {
-      frase[i] = toupper(frase[i]);
-    }
-  }
-  printf("%s\n", frase);
-  return 0;
+  primeiraletra(frase);
+  printf("Output: %s", frase);
 }
