@@ -1,15 +1,15 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
-int sget(char* vetor, int tam) {
-    fflush(stdin); 
-    if (fgets(vetor, tam, stdin)) { 
-        int i;
-        for( i = 0; vetor[i] != '\n' && vetor[i]; ++i)
-          ;
-        vetor[i] = '\0';
-    }
+int sget(char *vetor, int tam) {
+  fflush(stdin);
+  if (fgets(vetor, tam, stdin)) {
+    int i;
+    for (i = 0; vetor[i] != '\n' && vetor[i]; ++i)
+      ;
+    vetor[i] = '\0';
+  }
 }
 
 #define TAM 50
@@ -21,11 +21,11 @@ int main(void) {
   sget(frase, TAM);
 
   printf("Output: ");
-  for(i = 0; frase[i]!='\0'; i++ ){
-    if(i == 0){
-      if(frase[i]>='a' && frase[i]<='z'){
-        frase[i] = frase[i]-26;
-      }
+  for (i = 0; i < strlen(frase) + 1; i++) {
+    if (i == 0 || frase[i - 1] == ' ') {
+      frase[i] = toupper(frase[i]);
     }
   }
+  printf("%s\n", frase);
+  return 0;
 }
