@@ -21,7 +21,7 @@ int primeiraletra (char* frase){
   }
 
   for(i = 1; i < tamanho; i++){
-    if(frase[i] == '.' && frase[i] == '?' && i < tamanho - 1){
+    if(frase[i] == '.' || frase[i] == '?' || frase[i] == '!' && i < tamanho - 1){
       frase[i + 2] = toupper(frase[i + 2]);
     }
   }
